@@ -1,0 +1,73 @@
+@extends('layouts.kepala')
+@section('title', 'Edit Buku')
+
+@section('content')
+
+<div class="buku-form-card">
+    <form method="POST" action="{{ route('kepala.buku.update', $book) }}" enctype="multipart/form-data">
+        @csrf
+        @method('PUT')
+        <div class="buku-form-layout">
+
+            <div class="buku-cover-side">
+                <div class="cover-dropzone" id="dropzone">
+                    <div class="dropzone-inner" id="dropzoneInner" style="{{ $book->cover ? 'display:none;' : '' }}">
+                        <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+                            <path d="M32 44V20M32 20L24 28M32 20L40 28" stroke="#2f5d34" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M20 48C13.4 48 8 42.6 8 36C8 30.2 12.2 25.4 17.8 24.2C18.6 17.2 24.6 12 32 12C39.4 12 45.4 17.2 46.2 24.2C51.8 25.4 56 30.2 56 36C56 42.6 50.6 48 44 48" stroke="#2f5d34" stroke-width="3" stroke-linecap="round"/>
+                        </svg>
+                        <div class="dropzone-text">Drop File Here<br><span>Or</span></div>
+                        <label class="btn-upload-file">Upload File<input type="file" name="cover" id="coverInput" accept=".png,.jpg,.jpeg" style="display:none;"></label>
+                        <div class="dropzone-hint">Hanya Mendukung File Berbentuk<br>Png, Jpg, Jpeg</div>
+                    </div>
+                    <img id="coverPreview" src="{{ $book->cover ? asset('storage/'.$book->cover) : '' }}" alt=""
+                         style="{{ $book->cover ? 'display:block;' : 'display:none;' }} width:100%; height:100%; object-fit:cover; border-radius:12px;">
+                </div>
+                @if($book->cover)
+                    <label class="btn-change-cover" style="margin-top:8px; cursor:pointer;">
+                        Ganti Cover
+                        <input type="file" name="cover" id="coverInput2" accept=".png,.jpg,.jpeg" style="display:none;" onchange="showPreview2(this)">
+                    </label>
+                @endif
+            </div>
+
+            <div class="buku-fields-side">
+                <div class="buku-field"><label>Kode Buku*</label><input type="text" name="kode_buku" value="{{ old('kode_buku', $book->kode_buku) }}" required>@error('kode_buku')<span class="field-error">{{ $message }}</span>@enderror</div>
+                <div class="buku-field"><label>Penulis*</label><input type="text" name="author" value="{{ old('author', $book->author) }}" required>@error('author')<span class="field-error">{{ $message }}</span>@enderror</div>
+                <div class="buku-field"><label>Tahun terbit*</label><input type="date" name="year" value="{{ old('year', $book->year ? $book->year.'-01-01' : '') }}" required>@error('year')<span class="field-error">{{ $message }}</span>@enderror</div>
+                <div class="buku-field"><label>Judul Buku*</label><input type="text" name="title" value="{{ old('title', $book->title) }}" required>@error('title')<span class="field-error">{{ $message }}</span>@enderror</div>
+                <div class="buku-field"><label>Stok Buku*</label><input type="number" name="stock" value="{{ old('stock', $book->stock) }}" min="0" required>@error('stock')<span class="field-error">{{ $message }}</span>@enderror</div>
+                <div class="buku-form-actions">
+                    <a href="{{ route('kepala.buku.index') }}" class="btn-buku-kembali">Kembali</a>
+                    <button type="submit" class="btn-buku-submit">Simpan Perubahan</button>
+                </div>
+            </div>
+
+        </div>
+    </form>
+</div>
+
+<script>
+function showPreview2(input) {
+    if (input.files[0]) {
+        const reader = new FileReader();
+        reader.onload = e => { document.getElementById('coverPreview').src = e.target.result; };
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+const coverInput = document.getElementById('coverInput');
+if (coverInput) {
+    coverInput.addEventListener('change', function() {
+        if (this.files[0]) {
+            const reader = new FileReader();
+            reader.onload = e => {
+                document.getElementById('coverPreview').src = e.target.result;
+                document.getElementById('coverPreview').style.display = 'block';
+                document.getElementById('dropzoneInner').style.display = 'none';
+            };
+            reader.readAsDataURL(this.files[0]);
+        }
+    });
+}
+</script>
+@endsection

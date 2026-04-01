@@ -1,0 +1,244 @@
+/* ============================================================
+   LANDING PAGE
+   ============================================================ */
+
+.landing-page {
+    position: relative;
+    min-height: 100vh;
+    background: #e8f5e2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    font-family: 'Poppins-Regular', 'Segoe UI', Helvetica, sans-serif;
+}
+
+/* ── Bukit hijau ── */
+.hills {
+    position: absolute;
+    bottom: 60px;
+    left: 0;
+    width: 100%;
+    height: 340px;
+    pointer-events: none;
+}
+
+.hill {
+    position: absolute;
+    border-radius: 50%;
+}
+
+.hill-1 {
+    width: 110%;
+    height: 320px;
+    background: #b8dba0;
+    bottom: -60px;
+    left: -5%;
+}
+
+.hill-2 {
+    width: 75%;
+    height: 260px;
+    background: #a8d48e;
+    bottom: -20px;
+    left: -2%;
+    opacity: 0.85;
+}
+
+.hill-3 {
+    width: 60%;
+    height: 220px;
+    background: #c5e6ae;
+    bottom: -40px;
+    right: -5%;
+    opacity: 0.7;
+}
+
+/* ── Dekorasi kiri ── */
+.deco-left {
+    position: absolute;
+    left: -18px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.deco-circle-left {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+}
+
+.deco-circle-left.pink {
+    background: #f06292;
+    opacity: 0.85;
+}
+
+/* ── Dekorasi kanan atas ── */
+.deco-right {
+    position: absolute;
+    top: 72px;
+    right: 140px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+}
+
+.deco-dot {
+    border-radius: 50%;
+}
+
+.deco-dot.yellow {
+    width: 48px;
+    height: 48px;
+    background: #ffd54f;
+}
+
+.deco-dot.green {
+    width: 20px;
+    height: 20px;
+    background: #4caf50;
+    align-self: flex-start;
+    margin-left: 8px;
+}
+
+.deco-dot.pink-sm {
+    width: 22px;
+    height: 22px;
+    background: #f06292;
+    align-self: flex-end;
+    margin-right: 4px;
+}
+
+/* ── Mascot ── */
+.mascot {
+    position: absolute;
+    left: 12%;
+    top: 50%;
+    transform: translateY(-60%);
+    width: 155px;
+    filter: drop-shadow(0 8px 20px rgba(47, 93, 52, 0.18));
+}
+
+.mascot svg {
+    width: 100%;
+    height: auto;
+}
+
+/* ── Card utama ── */
+.welcome-card {
+    background: #ffffff;
+    border-radius: 28px;
+    padding: 52px 56px 44px;
+    width: 100%;
+    max-width: 480px;
+    text-align: center;
+    box-shadow: 0 8px 48px rgba(47, 93, 52, 0.10);
+    position: relative;
+    z-index: 2;
+}
+
+.welcome-card h1 {
+    font-family: 'Poppins-Bold', 'Segoe UI', Helvetica, sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: #1e1e1e;
+    margin-bottom: 6px;
+}
+
+.welcome-card h2 {
+    font-family: 'Poppins-Bold', 'Segoe UI', Helvetica, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #2f5d34;
+    margin-bottom: 14px;
+}
+
+.welcome-card p {
+    font-size: 14px;
+    color: #6b6b6b;
+    margin-bottom: 32px;
+    line-height: 1.6;
+}
+
+.btn-mulai {
+    display: block;
+    width: 100%;
+    padding: 16px;
+    background: #2f5d34;
+    color: #ffffff;
+    font-family: 'Poppins-Bold', 'Segoe UI', Helvetica, sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    border-radius: 50px;
+    text-decoration: none;
+    letter-spacing: 0.3px;
+    box-shadow: 0 4px 18px rgba(47, 93, 52, 0.30);
+    transition: background 0.2s, transform 0.15s, box-shadow 0.15s;
+    margin-bottom: 20px;
+}
+
+.btn-mulai:hover {
+    background: #245228;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(47, 93, 52, 0.40);
+}
+
+.login-hint {
+    font-size: 13px;
+    color: #6b6b6b;
+    margin-bottom: 0 !important;
+}
+
+.login-hint a {
+    color: #2f5d34;
+    font-family: 'Poppins-SemiBold', 'Segoe UI', Helvetica, sans-serif;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.login-hint a:hover {
+    text-decoration: underline;
+}
+
+/* ── Footer ── */
+.landing-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #2f5d34;
+    padding: 14px 0 12px;
+    text-align: center;
+    z-index: 3;
+}
+
+.landing-footer p {
+    font-family: 'Poppins-Regular', 'Segoe UI', Helvetica, sans-serif;
+    font-size: 13px;
+    color: #ffffff;
+    line-height: 1.7;
+    margin: 0;
+}
+
+.landing-footer p:last-child {
+    font-size: 11px;
+    color: #a5d6a7;
+}
+
+@media (max-width: 768px) {
+    .mascot      { display: none; }
+    .deco-left   { display: none; }
+    .deco-right  { display: none; }
+
+    .welcome-card {
+        padding: 36px 24px 32px;
+        margin: 16px;
+        max-width: 100%;
+    }
+    .welcome-card h1 { font-size: 22px; }
+    .welcome-card h2 { font-size: 16px; }
+
+    .hills { height: 180px; bottom: 40px; }
+    .landing-footer p { font-size: 11px; }
+}

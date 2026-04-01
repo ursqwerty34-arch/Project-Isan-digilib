@@ -1,0 +1,299 @@
+/* ============================================================
+   LANDING PAGE
+   ============================================================ */
+
+.frame {
+  position: relative;
+  width: 100vw;
+  min-height: 100vh;
+  background: linear-gradient(160deg, #e8f5e9 0%, #f1f8e9 40%, #c8e6c9 100%);
+  background-image: url('../img/vector-15.svg');
+  background-size: 100% 100%;
+  overflow: hidden;
+}
+
+.frame .vector  { position: absolute; width: 100%;    height: 31.11%; top: 68.89%; left: 0; }
+.frame .img     { position: absolute; width: 93.06%;  height: 31.11%; top: 68.89%; left: 6.94%; }
+.frame .vector-2{ position: absolute; width: 50%;     height: 32.22%; top: 67.78%; left: 50%; }
+.frame .vector-3{ position: absolute; width: 19.86%;  height: 87.33%; top: 12.67%; left: 80.14%; }
+.frame .vector-4{ position: absolute; width: 15.42%;  height: 80.22%; top: 19.78%; left: 84.58%; }
+.frame .vector-5{ position: absolute; width: 22.22%;  height: 80%;    top: 20%;    left: 77.78%; }
+
+.frame .group {
+  position: absolute;
+  width: 13.06%; height: 15.56%;
+  top: 35.56%; left: 15.28%;
+}
+
+.frame .group .vector-6,
+.frame .group .vector-7,
+.frame .group .vector-8,
+.frame .group .vector-9,
+.frame .group .vector-10,
+.frame .group .vector-11 {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+}
+
+.frame .group .vector-7  { width: 93.62%; height: 91.43%; top: 8.57%;  left: 6.38%; }
+.frame .group .vector-8  { width: 73.94%; height: 65%;    top: 35%;    left: 26.06%; }
+.frame .group .vector-9  { width: 47.34%; height: 65%;    top: 35%;    left: 52.66%; }
+.frame .group .vector-10 { width: 73.89%; height: 43.61%; top: 56.39%; left: 26.11%; }
+.frame .group .vector-11 { width: 19.15%; height: 92.86%; top: 7.14%;  left: 80.85%; }
+
+.frame .div {
+  position: absolute;
+  width: 52.92%; height: 46.67%;
+  top: 22.22%; left: 36.11%;
+  background: rgba(255,255,255,0.72);
+  border-radius: 24px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 8px 40px rgba(47,93,52,0.12);
+}
+
+.frame .div .vector-6 {
+  position: absolute; width: 100%; height: 100%; top: 0; left: 0; border-radius: 24px;
+}
+
+.frame .text-wrapper {
+  position: absolute;
+  width: 27.56%; height: 4.76%;
+  top: 73.13%; left: 44.62%;
+  font-family: 'Poppins-SemiBold', 'Segoe UI', Helvetica, sans-serif;
+  font-weight: 600; color: #2f5d34; font-size: 13px;
+  text-align: center; display: flex; align-items: center; justify-content: center;
+  text-decoration: none; transition: color 0.2s;
+}
+.frame .text-wrapper:hover { color: #1b3d20; text-decoration: underline; }
+
+.frame .text-wrapper-2 {
+  position: absolute;
+  width: 22.71%; height: 5.67%; top: 28.44%; left: 51.15%;
+  font-family: 'Poppins-Bold', 'Segoe UI', Helvetica, sans-serif;
+  font-weight: 700; color: #1e1e1e; font-size: 34px; text-align: center;
+}
+
+.frame .text-wrapper-3 {
+  position: absolute;
+  width: 15.14%; height: 3.33%; top: 34.44%; left: 54.93%;
+  font-family: 'Poppins-Bold', 'Segoe UI', Helvetica, sans-serif;
+  font-weight: 700; color: #2f5d34; font-size: 20px; text-align: center;
+}
+
+.frame .p {
+  position: absolute;
+  width: 29.79%; height: 2.56%; top: 40%; left: 47.60%;
+  font-family: 'Poppins-Regular', 'Segoe UI', Helvetica, sans-serif;
+  color: #6b6b6b; font-size: 15px; text-align: center;
+}
+
+.frame .group-2 {
+  position: absolute;
+  width: 29.17%; height: 6.67%; top: 47.78%; left: 47.92%;
+  background: linear-gradient(135deg, #2f5d34 0%, #4caf50 100%);
+  border-radius: 50px; display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 16px rgba(47,93,52,0.35);
+  transition: transform 0.15s, box-shadow 0.15s; text-decoration: none;
+}
+.frame .group-2:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(47,93,52,0.45); }
+
+.frame .text-wrapper-4 {
+  font-family: 'Poppins-Bold', 'Segoe UI', Helvetica, sans-serif;
+  font-weight: 700; color: #ffffff; font-size: 17px; letter-spacing: 0.3px;
+}
+
+.frame .text-wrapper-5 {
+  position: absolute;
+  width: 14.58%; height: 2.22%; top: 56.33%; left: 51.88%;
+  font-family: 'Poppins-Regular', 'Segoe UI', Helvetica, sans-serif;
+  color: #6b6b6b; font-size: 13px; text-align: center;
+}
+
+.frame .vector-12 { position: absolute; width: 100%; height: 8.89%; top: 91.11%; left: 0; }
+
+.frame .site-footer { position: absolute; width: 100%; bottom: 0; left: 0; }
+
+.frame .text-wrapper-6 {
+  position: absolute; width: 29.03%; top: 94.11%; left: 35.49%;
+  font-family: 'Poppins-Regular', 'Segoe UI', Helvetica, sans-serif;
+  color: #ffffff; font-size: 13px; text-align: center; line-height: 1.5;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.frame .text-wrapper-7 {
+  position: absolute; width: 22.08%; top: 96.56%; left: 38.96%;
+  font-family: 'Poppins-Regular', 'Segoe UI', Helvetica, sans-serif;
+  color: #cfe9c9; font-size: 11px; text-align: center; line-height: 1.5;
+}
+
+/* ============================================================
+   LOGIN & REGISTER PAGE
+   ============================================================ */
+
+.login-page {
+  min-height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(160deg, #e8f5e9 0%, #f1f8e9 50%, #dcedc8 100%);
+  position: relative; overflow: hidden;
+  font-family: 'Poppins-Regular', 'Segoe UI', Helvetica, sans-serif;
+}
+
+.login-wave {
+  position: absolute; bottom: 0; left: 0; width: 100%; line-height: 0;
+}
+.login-wave svg { display: block; width: 100%; height: 120px; }
+
+.login-mascot {
+  position: absolute; left: 8%; top: 50%; transform: translateY(-50%); width: 160px;
+}
+.login-mascot svg {
+  width: 100%; height: auto;
+  filter: drop-shadow(0 8px 16px rgba(47,93,52,0.15));
+}
+
+.login-deco-top {
+  position: absolute; top: 60px; right: 120px;
+  display: flex; flex-direction: column; gap: 12px; align-items: flex-end;
+}
+
+.deco-circle { border-radius: 50%; }
+.deco-circle.yellow { width: 52px; height: 52px; background: #ffd54f; opacity: 0.85; }
+.deco-circle.pink   { width: 28px; height: 28px; background: #f48fb1; opacity: 0.8; align-self: flex-end; margin-right: 10px; }
+
+.login-card {
+  background: #ffffff; border-radius: 24px;
+  padding: 48px 44px 40px; width: 100%; max-width: 440px;
+  box-shadow: 0 12px 48px rgba(47,93,52,0.13);
+  position: relative; z-index: 1;
+}
+
+.login-card .brand { text-align: center; margin-bottom: 28px; }
+.login-card .brand h1 {
+  font-family: 'Poppins-Bold', 'Segoe UI', Helvetica, sans-serif;
+  font-size: 22px; font-weight: 700; color: #1e1e1e; margin-bottom: 6px;
+}
+.login-card .brand p { font-size: 13px; color: #6b6b6b; }
+
+.login-card .alert-error {
+  background: #fef2f2; border: 1px solid #fca5a5; color: #b91c1c;
+  border-radius: 10px; padding: 10px 14px; font-size: 13px;
+  margin-bottom: 16px; text-align: center;
+}
+
+.login-card .form-group { margin-bottom: 14px; }
+
+.login-card input[type="text"],
+.login-card input[type="email"],
+.login-card input[type="password"] {
+  width: 100%; padding: 14px 18px;
+  border: none; border-radius: 12px; background: #f3f4f6;
+  font-family: 'Poppins-Regular', 'Segoe UI', Helvetica, sans-serif;
+  font-size: 14px; color: #1e1e1e; outline: none;
+  transition: box-shadow 0.2s, background 0.2s;
+}
+.login-card input::placeholder { color: #9ca3af; }
+.login-card input:focus { background: #ffffff; box-shadow: 0 0 0 2px #2f5d34; }
+
+.login-card .btn-login {
+  width: 100%; padding: 15px;
+  background: #2f5d34; color: #ffffff;
+  font-family: 'Poppins-Bold', 'Segoe UI', Helvetica, sans-serif;
+  font-weight: 700; font-size: 15px; border: none; border-radius: 50px;
+  cursor: pointer; margin-top: 10px;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.15s;
+  box-shadow: 0 4px 16px rgba(47,93,52,0.3); letter-spacing: 0.3px;
+}
+.login-card .btn-login:hover {
+  background: #245228; transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(47,93,52,0.4);
+}
+
+.login-card .register-link {
+  text-align: center; margin-top: 20px; font-size: 13px; color: #6b6b6b;
+}
+.login-card .register-link a {
+  color: #2f5d34;
+  font-family: 'Poppins-SemiBold', 'Segoe UI', Helvetica, sans-serif;
+  font-weight: 600; text-decoration: underline;
+}
+
+/* ============================================================
+   DASHBOARD PAGES
+   ============================================================ */
+
+.dashboard-page {
+  min-height: 100vh; display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(160deg, #e8f5e9 0%, #f1f8e9 50%, #dcedc8 100%);
+  font-family: 'Poppins-Regular', 'Segoe UI', Helvetica, sans-serif;
+}
+
+.dashboard-card {
+  background: #ffffff; border-radius: 24px; padding: 48px 44px;
+  text-align: center; box-shadow: 0 12px 48px rgba(47,93,52,0.13);
+  max-width: 480px; width: 100%;
+}
+.dashboard-card h1 {
+  font-family: 'Poppins-Bold', 'Segoe UI', Helvetica, sans-serif;
+  font-size: 24px; color: #1e1e1e; margin: 16px 0 10px;
+}
+.dashboard-card p { font-size: 14px; color: #6b6b6b; margin-bottom: 28px; }
+
+.dashboard-badge {
+  display: inline-block; padding: 6px 18px; border-radius: 50px;
+  font-family: 'Poppins-SemiBold', 'Segoe UI', Helvetica, sans-serif;
+  font-size: 12px; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase;
+}
+.dashboard-badge.anggota  { background: #e8f5e9; color: #2f5d34; }
+.dashboard-badge.petugas  { background: #e3f2fd; color: #1565c0; }
+.dashboard-badge.kepala   { background: #fff3e0; color: #e65100; }
+
+.btn-logout {
+  padding: 12px 32px; background: #f3f4f6; color: #6b6b6b;
+  font-family: 'Poppins-SemiBold', 'Segoe UI', Helvetica, sans-serif;
+  font-size: 14px; font-weight: 600; border: none; border-radius: 50px;
+  cursor: pointer; transition: background 0.2s, color 0.2s;
+}
+.btn-logout:hover { background: #2f5d34; color: #ffffff; }
+
+/* ============================================================
+   RESPONSIVE — LANDING PAGE
+   ============================================================ */
+
+@media (max-width: 768px) {
+    .mascot { display: none; }
+    .deco-left { display: none; }
+    .deco-right { display: none; }
+
+    .welcome-card {
+        padding: 36px 24px 32px;
+        margin: 16px;
+        max-width: 100%;
+    }
+    .welcome-card h1 { font-size: 22px; }
+    .welcome-card h2 { font-size: 16px; }
+    .welcome-card p  { font-size: 13px; }
+
+    .hills { height: 200px; bottom: 40px; }
+    .hill-1 { height: 200px; }
+    .hill-2 { height: 160px; }
+    .hill-3 { height: 140px; }
+
+    .landing-footer { padding: 10px 16px; }
+    .landing-footer p { font-size: 11px; }
+}
+
+/* ============================================================
+   RESPONSIVE — LOGIN & REGISTER
+   ============================================================ */
+
+@media (max-width: 768px) {
+    .login-mascot    { display: none; }
+    .login-deco-top  { display: none; }
+
+    .login-card {
+        padding: 36px 24px 32px;
+        margin: 16px;
+        max-width: 100%;
+        border-radius: 20px;
+    }
+    .login-card .brand h1 { font-size: 20px; }
+}

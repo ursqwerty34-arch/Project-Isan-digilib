@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 148" preserveAspectRatio="xMidYMid meet">
+  <!-- Kaki kanan -->
+  <rect x="7" y="0" width="22" height="35" rx="8" fill="#2f5d34"/>
+  <ellipse cx="18" cy="50" rx="30" ry="16" fill="#2f5d34" transform="rotate(10 18 50)"/>
+</svg>

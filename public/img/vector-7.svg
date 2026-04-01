@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 176 146" preserveAspectRatio="xMidYMid meet">
+  <!-- Mata kiri -->
+  <circle cx="80" cy="60" r="14" fill="#ffffff"/>
+  <circle cx="80" cy="60" r="8" fill="#1e1e1e"/>
+  <circle cx="83" cy="57" r="3" fill="#ffffff"/>
+  <!-- Mata kanan -->
+  <circle cx="120" cy="60" r="14" fill="#ffffff"/>
+  <circle cx="120" cy="60" r="8" fill="#1e1e1e"/>
+  <circle cx="123" cy="57" r="3" fill="#ffffff"/>
+  <!-- Senyum -->
+  <path d="M75,90 Q100,115 125,90" stroke="#1e1e1e" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <!-- Pipi merah -->
+  <circle cx="65" cy="85" r="10" fill="#ff8a80" fill-opacity="0.5"/>
+  <circle cx="135" cy="85" r="10" fill="#ff8a80" fill-opacity="0.5"/>
+</svg>
