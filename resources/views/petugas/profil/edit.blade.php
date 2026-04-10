@@ -50,7 +50,7 @@
         </div>
 
         <div class="profil-field">
-            <label>Nomer induk*</label>
+            <label>NISN*</label>
             <input type="text" name="nik" value="{{ old('nik', $user->nik) }}" required>
             @error('nik')<span style="color:#ef5350; font-size:11px;">{{ $message }}</span>@enderror
         </div>
@@ -63,7 +63,7 @@
 
         <div class="profil-field">
             <label>Jenis Kelamin*</label>
-            <select name="gender" required>
+            <select name="gender" required data-cs data-cs-form>
                 <option value="">Pilih...</option>
                 <option value="Laki-laki" {{ old('gender', $user->gender) === 'Laki-laki' ? 'selected' : '' }}>Laki-laki</option>
                 <option value="Perempuan" {{ old('gender', $user->gender) === 'Perempuan' ? 'selected' : '' }}>Perempuan</option>

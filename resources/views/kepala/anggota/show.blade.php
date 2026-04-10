@@ -49,23 +49,11 @@
                     <span class="info-label">Bergabung Pada :</span>
                     <span class="info-value">{{ $user->created_at->format('d/m/Y') }}</span>
                 </div>
-                <div class="show-info-item">
-                    <span class="info-label">Password :</span>
-                    <span class="info-value" style="display:flex; align-items:center; gap:8px;">
-                        <input type="password" id="passInput"
-                            value="{{ $user->plain_password ?? '-' }}"
-                            readonly
-                            style="border:none; outline:none; background:transparent; font-size:14px; color:#374151; font-family:inherit; width:120px; cursor:default;">
-                        <button type="button" onclick="togglePass()"
-                            style="background:none; border:none; cursor:pointer; font-size:16px; color:#2f5d34; padding:0; line-height:1;"
-                            id="passToggleBtn">&#128065;</button>
-                    </span>
-                </div>
             </div>
 
             <div class="show-info-col">
                 <div class="show-info-item">
-                    <span class="info-label">NIK :</span>
+                    <span class="info-label">NISN :</span>
                     <span class="info-value">{{ $user->nik ?? '-' }}</span>
                 </div>
                 <div class="show-info-item">
@@ -97,18 +85,6 @@
 
 </div>
 
-<script>
-function togglePass() {
-    const input = document.getElementById('passInput');
-    const btn   = document.getElementById('passToggleBtn');
-    if (input.type === 'password') {
-        input.type = 'text';
-        btn.innerHTML = '&#128584;';
-    } else {
-        input.type = 'password';
-        btn.innerHTML = '&#128065;';
-    }
-}
-</script>
+
 
 @endsection

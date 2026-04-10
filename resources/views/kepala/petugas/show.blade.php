@@ -69,7 +69,7 @@
 
             <div class="show-info-col">
                 <div class="show-info-item">
-                    <span class="info-label">NIK :</span>
+                    <span class="info-label">NISN :</span>
                     <span class="info-value">{{ $user->nik ?? '-' }}</span>
                 </div>
                 <div class="show-info-item">

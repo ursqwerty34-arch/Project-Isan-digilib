@@ -70,13 +70,13 @@
                        placeholder="Lisa Kardashian Halim Jenner" required/>
             </div>
             <div class="form-group">
-                <label>Nomer induk*</label>
+                <label>NISN*</label>
                 <input type="text" name="nik" value="{{ old('nik') }}"
                        placeholder="32071770"/>
             </div>
             <div class="form-group">
                 <label>Jenis Kelamin*</label>
-                <select name="gender">
+                <select name="gender" data-cs data-cs-form>
                     <option value="">-- Pilih --</option>
                     <option value="Laki-laki"  {{ old('gender') === 'Laki-laki'  ? 'selected' : '' }}>Laki - laki</option>
                     <option value="Perempuan"  {{ old('gender') === 'Perempuan'  ? 'selected' : '' }}>Perempuan</option>

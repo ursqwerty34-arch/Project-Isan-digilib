@@ -12,11 +12,13 @@ class KepalaTransaksiController extends Controller
         $peminjaman = Loan::with(['book', 'user'])
             ->whereIn('pengajuan_status', ['disetujui', 'ditolak'])
             ->latest()
-            ->get();
+            ->paginate(10, ['*'], 'pinjam_page')
+            ->withQueryString();
 
         $pengembalian = BookReturn::with(['loan.book', 'loan.user'])
             ->latest()
-            ->get();
+            ->paginate(10, ['*'], 'kembali_page')
+            ->withQueryString();
 
         return view('kepala.transaksi', compact('peminjaman', 'pengembalian'));
     }

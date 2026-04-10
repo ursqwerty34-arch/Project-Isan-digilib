@@ -71,6 +71,19 @@
                     <input type="number" name="stock" value="{{ old('stock', $book->stock) }}" min="0" required>
                     @error('stock')<span class="field-error">{{ $message }}</span>@enderror
                 </div>
+                <div class="buku-field">
+                    <label>Kategori</label>
+                    <select name="category_id" data-cs data-cs-form style="display:none">
+                        <option value="">-- Tanpa Kategori --</option>
+                        @foreach($categories as $cat)
+                            <option value="{{ $cat->id }}" {{ old('category_id', $book->category_id) == $cat->id ? 'selected' : '' }}>{{ $cat->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="buku-field">
+                    <label>Sinopsis</label>
+                    <textarea name="synopsis" rows="4" placeholder="Tulis sinopsis buku..." style="width:100%;padding:12px 16px;border:1.5px solid #2f5d34;border-radius:10px;font-size:14px;color:#374151;outline:none;resize:vertical;font-family:inherit;">{{ old('synopsis', $book->synopsis) }}</textarea>
+                </div>
 
                 <div class="buku-form-actions">
                     <a href="{{ route('petugas.buku.index') }}" class="btn-buku-kembali">Kembali</a>

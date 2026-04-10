@@ -84,10 +84,9 @@
 {{-- Buku Terbaru --}}
 <div class="db-section-header">
     <div class="db-section-title">🆕 Buku Terbaru</div>
-    <a href="{{ route('anggota.buku.index') }}" class="db-see-all">Lihat semua →</a>
 </div>
 
-<div class="db-book-grid">
+<div class="db-book-grid db-book-grid-sm">
     @forelse($books as $book)
     <a href="{{ route('anggota.buku.show', $book) }}" class="db-book-card">
         <div class="db-book-cover">
@@ -97,6 +96,10 @@
                 <div class="db-book-cover-ph">📖</div>
             @endif
             <span class="db-book-new-badge">Baru</span>
+            @php $r = $book->avgRating(); @endphp
+            @if($r > 0)
+                <span class="db-book-rating-badge">⭐ {{ number_format($r,1) }}</span>
+            @endif
         </div>
         <div class="db-book-body">
             <div class="db-book-title">{{ $book->title }}</div>

@@ -13,35 +13,26 @@ class AnggotaNotifController extends Controller
         $user     = Auth::user();
         $tomorrow = now()->addDay()->toDateString();
 
-        $reminders = Loan::where('user_id', $user->id)
-            ->where('status', 'dipinjam')
-            ->where('due_date', $tomorrow)
-            ->get();
+        Loan::where('user_id', $user->id)->where('status', 'dipinjam')->where('due_date', $tomorrow)
+            ->get()->each(function ($loan) use ($user) {
+                if (!Notification::where('user_id', $user->id)->where('type', 'reminder')->whereJsonContains('data->loan_id', $loan->id)->exists()) {
+                    Notification::create([
+                        'user_id' => $user->id,
+                        'type'    => 'reminder',
+                        'message' => 'Reminder: Batas pengembalian buku kamu besok.',
+                        'data'    => ['loan_id' => $loan->id, 'judul' => $loan->book->title, 'due_date' => $loan->due_date],
+                    ]);
+                }
+            });
 
-        foreach ($reminders as $loan) {
-            $alreadySent = Notification::where('user_id', $user->id)
-                ->where('type', 'reminder')
-                ->whereJsonContains('data->loan_id', $loan->id)
-                ->exists();
+        Notification::where('user_id', $user->id)->whereNotNull('read_at')->where('read_at', '<=', now()->subHours(24))->delete();
 
-            if (!$alreadySent) {
-                Notification::create([
-                    'user_id' => $user->id,
-                    'type'    => 'reminder',
-                    'message' => 'Reminder: Batas pengembalian buku kamu besok.',
-                    'data'    => ['loan_id' => $loan->id, 'judul' => $loan->book->title, 'due_date' => $loan->due_date],
-                ]);
-            }
-        }
-
-        $notifications = Notification::where('user_id', $user->id)->latest()->get();
-
-        return view('anggota.notif', compact('notifications'));
+        return view('anggota.notif', ['notifications' => Notification::where('user_id', $user->id)->latest()->get()]);
     }
 
     public function markRead(Notification $notification)
     {
-        $notification->update(['is_read' => true]);
+        $notification->update(['is_read' => true, 'read_at' => now()]);
         return response()->json(['success' => true]);
     }
 }

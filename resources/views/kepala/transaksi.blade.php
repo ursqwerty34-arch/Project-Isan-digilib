@@ -51,6 +51,7 @@
             @endforelse
         </tbody>
     </table>
+    {!! $peminjaman->render('layouts._pagination') !!}
 </div>
 
 {{-- TAB PENGEMBALIAN (screenshot 2) --}}
@@ -103,6 +104,7 @@
             @endforelse
         </tbody>
     </table>
+    {!! $pengembalian->render('layouts._pagination') !!}
 </div>
 
 <script>

@@ -18,7 +18,7 @@
                 <th>Username</th>
                 <th>Email</th>
                 <th>No Telp</th>
-                <th>NIK/NIS</th>
+                <th>NISN</th>
                 <th>Nama Lengkap Anggota</th>
                 <th>Aksi</th>
             </tr>
@@ -44,6 +44,10 @@
                     <div class="aksi-group">
                         <a href="{{ route('kepala.petugas.show', $p) }}" class="btn-aksi view" title="Lihat">👁</a>
                         <a href="{{ route('kepala.petugas.edit', $p) }}" class="btn-aksi edit">Edit</a>
+                        <button type="button" class="btn-aksi edit"
+                            onclick="showResetModal('{{ route('kepala.petugas.resetPassword', $p) }}', '{{ $p->name }}')">
+                            Reset
+                        </button>
                         <button type="button" class="btn-aksi hapus"
                             onclick="showDeleteModal('{{ route('kepala.petugas.destroy', $p) }}')">
                             Hapus
@@ -58,11 +62,35 @@
             @endforelse
         </tbody>
     </table>
+    {!! $petugas->render('layouts._pagination') !!}
 </div>
 
 @endsection
 
 @section('modal')
+<div class="modal-overlay" id="resetModal" onclick="hideResetModal(event)">
+    <div class="modal-box">
+        <div class="modal-mascot">
+            <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="40" cy="40" r="38" fill="#e8f5e9" stroke="#c8e6c9" stroke-width="2"/>
+                <rect x="18" y="18" width="44" height="44" rx="10" fill="#ffffff" stroke="#2f5d34" stroke-width="3"/>
+                <circle cx="31" cy="37" r="4" fill="#2f5d34"/>
+                <circle cx="49" cy="37" r="4" fill="#2f5d34"/>
+                <path d="M29,50 Q40,58 51,50" stroke="#2f5d34" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            </svg>
+        </div>
+        <h3 class="modal-title">Reset password <span id="resetName"></span>?</h3>
+        <p class="modal-subtitle">Password akan direset menjadi <strong>12345678</strong></p>
+        <div class="modal-actions">
+            <button type="button" class="btn-modal-batal" onclick="hideResetModal()">Batal</button>
+            <form id="resetForm" method="POST">
+                @csrf
+                <button type="submit" class="btn-modal-hapus">Reset</button>
+            </form>
+        </div>
+    </div>
+</div>
+
 {{-- Modal Konfirmasi Hapus --}}
 <div class="modal-overlay" id="deleteModal" onclick="hideDeleteModal(event)">
     <div class="modal-box">
@@ -96,6 +124,16 @@
 </div>
 
 <script>
+function showResetModal(url, name) {
+    document.getElementById('resetForm').action = url;
+    document.getElementById('resetName').textContent = name;
+    document.getElementById('resetModal').classList.add('active');
+}
+function hideResetModal(e) {
+    if (!e || e.target === document.getElementById('resetModal')) {
+        document.getElementById('resetModal').classList.remove('active');
+    }
+}
 function showDeleteModal(url) {
     document.getElementById('deleteForm').action = url;
     document.getElementById('deleteModal').classList.add('active');

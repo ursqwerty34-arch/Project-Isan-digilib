@@ -42,6 +42,7 @@
         </tbody>
     </table>
     </div>
+    {!! $aktif->render('layouts._pagination') !!}
 </div>
 
 <div class="ang-table-card" style="margin-top:24px;">
@@ -66,6 +67,7 @@
         </tbody>
     </table>
     </div>
+    {!! $dikembalikan->render('layouts._pagination') !!}
 </div>
 
 @endsection

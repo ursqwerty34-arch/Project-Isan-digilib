@@ -61,6 +61,7 @@
             @endforelse
         </tbody>
     </table>
+    {!! $books->render('layouts._pagination') !!}
 </div>
 
 {{-- Modal Hapus --}}

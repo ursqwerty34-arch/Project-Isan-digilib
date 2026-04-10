@@ -14,13 +14,15 @@ class PetugasPengajuanController extends Controller
         $pending = Loan::with(['book', 'user'])
             ->where('pengajuan_status', 'pending')
             ->latest()
-            ->get();
+            ->paginate(10, ['*'], 'pending_page')
+            ->withQueryString();
 
         $confirmed = Loan::with(['book', 'user'])
             ->where('confirmed_by', Auth::id())
             ->whereIn('pengajuan_status', ['disetujui', 'ditolak'])
             ->latest()
-            ->get();
+            ->paginate(10, ['*'], 'confirmed_page')
+            ->withQueryString();
 
         return view('petugas.pengajuan', compact('pending', 'confirmed'));
     }
@@ -45,20 +47,21 @@ class PetugasPengajuanController extends Controller
 
     public function pinjamkan(Request $request, Loan $loan)
     {
-        $request->validate(['due_date' => 'required|date']);
+        $dueDate = now()->addDays($loan->duration ?? 7)->toDateString();
 
         $loan->update([
             'pengajuan_status' => 'disetujui',
+            'status'           => 'dipinjam',
             'confirmed_by'     => Auth::id(),
-            'due_date'         => $request->due_date,
+            'loan_date'        => now()->toDateString(),
+            'due_date'         => $dueDate,
         ]);
 
-        // Kurangi stok buku
-        $loan->book->decrement('stock');
+        $loan->book->decrement('stock', $loan->qty ?? 1);
 
         NotifHelper::send($loan->user_id, 'loan_approved',
             'Selamat! Peminjaman buku kamu telah dikonfirmasi.',
-            ['judul' => $loan->book->title, 'due_date' => $request->due_date]
+            ['judul' => $loan->book->title, 'due_date' => $dueDate]
         );
 
         return response()->json(['success' => true]);

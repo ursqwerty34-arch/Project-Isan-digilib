@@ -15,11 +15,16 @@ class PetugasPengembalianController extends Controller
         $pending = Loan::with(['book', 'user'])
             ->where('pengajuan_status', 'disetujui')
             ->where('status', 'dipinjam')
-            ->latest()->get();
+            ->where('return_requested', true)
+            ->latest()
+            ->paginate(10, ['*'], 'pending_page')
+            ->withQueryString();
 
         $confirmed = BookReturn::with(['loan.book', 'loan.user'])
             ->where('confirmed_by', Auth::id())
-            ->latest()->get();
+            ->latest()
+            ->paginate(10, ['*'], 'confirmed_page')
+            ->withQueryString();
 
         return view('petugas.pengembalian', compact('pending', 'confirmed'));
     }

@@ -9,30 +9,17 @@ class AnggotaTransaksiController extends Controller
 {
     public function index()
     {
-        $userId = Auth::id();
-
-        $aktif = Loan::with(['book', 'bookReturn'])
-            ->where('user_id', $userId)
-            ->where('status', '!=', 'dikembalikan')
-            ->latest()->get();
-
-        $dikembalikan = Loan::with(['book', 'bookReturn'])
-            ->where('user_id', $userId)
-            ->where('status', 'dikembalikan')
-            ->latest()->get();
-
-        return view('anggota.transaksi', compact('aktif', 'dikembalikan'));
+        $uid = Auth::id();
+        return view('anggota.transaksi', [
+            'aktif'        => Loan::with(['book', 'bookReturn'])->where('user_id', $uid)->where('status', '!=', 'dikembalikan')->latest()->paginate(10, ['*'], 'aktif_page')->withQueryString(),
+            'dikembalikan' => Loan::with(['book', 'bookReturn'])->where('user_id', $uid)->where('status', 'dikembalikan')->latest()->paginate(10, ['*'], 'kembali_page')->withQueryString(),
+        ]);
     }
 
     public function kembalikan(Loan $loan)
     {
-        // Pastikan loan milik user ini
-        if ($loan->user_id !== Auth::id()) {
-            return response()->json(['success' => false], 403);
-        }
-
+        abort_if($loan->user_id !== Auth::id(), 403);
         $loan->update(['return_requested' => true]);
-
         return response()->json(['success' => true]);
     }
 }

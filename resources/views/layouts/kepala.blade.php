@@ -50,5 +50,7 @@ if(btn) {
 }
 </script>
 
+<script src="{{ asset('js/custom-select.js') }}"></script>
+
 </body>
 </html>

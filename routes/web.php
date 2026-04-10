@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\BookFavoriteController;
+use App\Http\Controllers\BookReviewController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
@@ -18,6 +20,8 @@ use App\Http\Controllers\PetugasPengajuanController;
 use App\Http\Controllers\PetugasProfilController;
 use App\Http\Controllers\PetugasPengembalianController;
 use App\Http\Controllers\PetugasBukuController;
+use App\Http\Controllers\KepalaKategoriController;
+use App\Http\Controllers\LaporanController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [LandingController::class, 'index'])->name('landing');
@@ -39,9 +43,18 @@ Route::middleware('auth')->group(function () {
     Route::get('/anggota/buku', [AnggotaBukuController::class, 'index'])->name('anggota.buku.index');
     Route::get('/anggota/buku/{book}', [AnggotaBukuController::class, 'show'])->name('anggota.buku.show');
     Route::post('/anggota/buku/{book}/ajukan', [AnggotaBukuController::class, 'ajukan'])->name('anggota.buku.ajukan');
+    Route::post('/anggota/buku/{book}/review', [BookReviewController::class, 'store'])->name('anggota.buku.review');
+    Route::get('/anggota/favorit', [BookFavoriteController::class, 'index'])->name('anggota.favorit');
+    Route::post('/anggota/buku/{book}/favorit', [BookFavoriteController::class, 'toggle'])->name('anggota.buku.favorit');
     Route::get('/anggota/profil', [ProfilAnggotaController::class, 'index'])->name('anggota.profil');
     Route::put('/anggota/profil', [ProfilAnggotaController::class, 'update'])->name('anggota.profil.update');
+    Route::put('/anggota/profil/password', [ProfilAnggotaController::class, 'updatePassword'])->name('anggota.profil.password');
     Route::delete('/anggota/profil/photo', [ProfilAnggotaController::class, 'deletePhoto'])->name('anggota.profil.deletePhoto');
+    Route::get('/petugas/laporan', [LaporanController::class, 'index'])->name('petugas.laporan');
+    Route::get('/petugas/laporan/cetak', [LaporanController::class, 'cetak'])->name('petugas.laporan.cetak');
+    Route::get('/kepala/laporan', [LaporanController::class, 'index'])->name('kepala.laporan');
+    Route::get('/kepala/laporan/cetak', [LaporanController::class, 'cetak'])->name('kepala.laporan.cetak');
+
     Route::get('/dashboard/petugas', [PetugasDashboardController::class, 'index'])->name('dashboard.petugas');
     Route::get('/petugas/pengajuan', [PetugasPengajuanController::class, 'index'])->name('petugas.pengajuan');
     Route::post('/petugas/pengajuan/{loan}/tolak', [PetugasPengajuanController::class, 'tolak'])->name('petugas.pengajuan.tolak');
@@ -52,6 +65,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/petugas/profil', [PetugasProfilController::class, 'index'])->name('petugas.profil');
     Route::get('/petugas/profil/edit', [PetugasProfilController::class, 'edit'])->name('petugas.profil.edit');
     Route::put('/petugas/profil', [PetugasProfilController::class, 'update'])->name('petugas.profil.update');
+    Route::put('/petugas/profil/password', [PetugasProfilController::class, 'updatePassword'])->name('petugas.profil.password');
 
     Route::get('/petugas/pengembalian', [PetugasPengembalianController::class, 'index'])->name('petugas.pengembalian');
     Route::post('/petugas/pengembalian/{loan}/konfirmasi', [PetugasPengembalianController::class, 'konfirmasi'])->name('petugas.pengembalian.konfirmasi');
@@ -74,13 +88,20 @@ Route::middleware('auth')->group(function () {
     Route::put('/kepala/buku/{book}', [KepalaBookController::class, 'update'])->name('kepala.buku.update');
     Route::delete('/kepala/buku/{book}', [KepalaBookController::class, 'destroy'])->name('kepala.buku.destroy');
 
+    Route::get('/kepala/kategori', [KepalaKategoriController::class, 'index'])->name('kepala.kategori.index');
+    Route::post('/kepala/kategori', [KepalaKategoriController::class, 'store'])->name('kepala.kategori.store');
+    Route::put('/kepala/kategori/{category}', [KepalaKategoriController::class, 'update'])->name('kepala.kategori.update');
+    Route::delete('/kepala/kategori/{category}', [KepalaKategoriController::class, 'destroy'])->name('kepala.kategori.destroy');
+
     Route::get('/kepala/transaksi', [KepalaTransaksiController::class, 'index'])->name('kepala.transaksi');
     Route::get('/dashboard/kepala', [KepalaController::class, 'dashboard'])->name('dashboard.kepala');
 
     Route::get('kepala/anggota', [AnggotaController::class, 'index'])->name('kepala.anggota.index');
     Route::get('kepala/anggota/{user}', [AnggotaController::class, 'show'])->name('kepala.anggota.show');
+    Route::post('kepala/anggota/{user}/reset-password', [AnggotaController::class, 'resetPassword'])->name('kepala.anggota.resetPassword');
     Route::delete('kepala/anggota/{user}', [AnggotaController::class, 'destroy'])->name('kepala.anggota.destroy');
 
+    Route::post('kepala/petugas/{user}/reset-password', [PetugasController::class, 'resetPassword'])->name('kepala.petugas.resetPassword');
     Route::resource('kepala/petugas', PetugasController::class)
         ->parameters(['petugas' => 'user'])
         ->names([

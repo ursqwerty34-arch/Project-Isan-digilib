@@ -22,9 +22,12 @@
         {{-- Nav Links (desktop) --}}
         <nav class="anggota-nav-links">
             <a href="{{ route('dashboard.anggota') }}" class="anggota-nav-link {{ request()->routeIs('dashboard.anggota') ? 'active' : '' }}">Beranda</a>
-            <a href="{{ route('anggota.buku.index') }}" class="anggota-nav-link {{ request()->routeIs('anggota.buku*') ? 'active' : '' }}">Koleksi Buku</a>
             <a href="{{ route('anggota.transaksi') }}" class="anggota-nav-link {{ request()->routeIs('anggota.transaksi*') ? 'active' : '' }}">Transaksi</a>
             <a href="{{ route('anggota.notif') }}" class="anggota-nav-link {{ request()->routeIs('anggota.notif*') ? 'active' : '' }}">Notifikasi</a>
+            <a href="{{ route('anggota.favorit') }}" class="anggota-nav-link anggota-nav-favorit {{ request()->routeIs('anggota.favorit*') ? 'active' : '' }}">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="{{ request()->routeIs('anggota.favorit*') ? '#ef5350' : 'none' }}" stroke="#ef5350" stroke-width="2.2" style="vertical-align:middle;margin-right:4px;flex-shrink:0;"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                Favorit
+            </a>
         </nav>
 
         {{-- Right: profil + logout --}}
@@ -54,13 +57,6 @@
 <div class="anggota-drawer-overlay" id="navOverlay"></div>
 <div class="anggota-drawer" id="navDrawer">
     <div class="anggota-drawer-brand">📚 DigiLib</div>
-    <nav class="anggota-drawer-nav">
-        <a href="{{ route('dashboard.anggota') }}" class="anggota-drawer-link {{ request()->routeIs('dashboard.anggota') ? 'active' : '' }}">🏠 Beranda</a>
-        <a href="{{ route('anggota.buku.index') }}" class="anggota-drawer-link {{ request()->routeIs('anggota.buku*') ? 'active' : '' }}">📖 Koleksi Buku</a>
-        <a href="{{ route('anggota.transaksi') }}" class="anggota-drawer-link {{ request()->routeIs('anggota.transaksi*') ? 'active' : '' }}">🔄 Transaksi</a>
-        <a href="{{ route('anggota.notif') }}" class="anggota-drawer-link {{ request()->routeIs('anggota.notif*') ? 'active' : '' }}">🔔 Notifikasi</a>
-        <a href="{{ route('anggota.profil') }}" class="anggota-drawer-link {{ request()->routeIs('anggota.profil*') ? 'active' : '' }}">👤 Profil</a>
-    </nav>
     <form method="POST" action="{{ route('logout') }}" style="padding:0 16px 24px;">
         @csrf
         <button type="submit" class="anggota-drawer-logout">Logout</button>
@@ -85,7 +81,6 @@
         </div>
         <div class="anggota-footer-links">
             <a href="{{ route('dashboard.anggota') }}">Beranda</a>
-            <a href="{{ route('anggota.buku.index') }}">Koleksi Buku</a>
             <a href="{{ route('anggota.transaksi') }}">Transaksi</a>
             <a href="{{ route('anggota.notif') }}">Notifikasi</a>
             <a href="{{ route('anggota.profil') }}">Profil</a>
@@ -105,6 +100,8 @@ if(btn){
     overlay.addEventListener('click', () => { drawer.classList.remove('open'); overlay.classList.remove('open'); });
 }
 </script>
+
+<script src="{{ asset('js/custom-select.js') }}"></script>
 
 </body>
 </html>
